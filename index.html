@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andi Pratama — Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="#home" class="nav-logo">andi<span>.</span></a>
+
+            <!-- Menu Desktop -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Tombol Kanan: Theme Toggle + Hamburger -->
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle tema">
+                    <i class="fa-solid fa-sun" id="themeIcon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Buka menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="home">
+        <!-- Dekorasi blob latar -->
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+
+        <div class="hero-content reveal">
+            <p class="hero-greeting">Halo, saya</p>
+            <h1 class="hero-name">Andi <span class="accent">Pratama</span></h1>
+            <p class="hero-desc">Mahasiswa & Aspiring Developer — Mendesain dan membangun pengalaman digital yang bermakna.</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">Lihat Project <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-ghost">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Tentang Saya</span>
+                <h2 class="section-title">Mengenal Lebih Dekat</h2>
+            </div>
+
+            <div class="about-grid">
+                <!-- Teks Deskripsi -->
+                <div class="about-text reveal">
+                    <p>
+                        Saya adalah mahasiswa semester 5 yang memiliki ketertarikan besar di dunia
+                        pengembangan web. Perjalanan saya dimulai dari rasa penasaran akan bagaimana
+                        sebuah website dibangun, dan kini saya terus belajar setiap harinya.
+                    </p>
+                    <p>
+                        Saya percaya bahwa kode yang baik bukan hanya tentang fungsionalitas,
+                        tetapi juga tentang bagaimana pengalaman yang dirasakan pengguna.
+                        Saya selalu berusaha menulis kode yang bersih, terstruktur, dan mudah dipelihara.
+                    </p>
+                </div>
+
+                <!-- Skill Tags -->
+                <div class="about-skills reveal">
+                    <h3 class="skills-heading">Keahlian</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag"><i class="fa-brands fa-html5"></i> HTML</span>
+                        <span class="skill-tag"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                        <span class="skill-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <span class="skill-tag"><i class="fa-brands fa-react"></i> React</span>
+                        <span class="skill-tag"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                        <span class="skill-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+                        <span class="skill-tag"><i class="fa-solid fa-wind"></i> Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section class="section section-alt" id="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Project Terbaru</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Card 1 -->
+                <article class="project-card reveal">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/dash-ui/600/400.jpg" alt="Screenshot E-Commerce Dashboard" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">E-Commerce Dashboard</h3>
+                        <p class="card-desc">Panel admin untuk mengelola produk, pesanan, dan analitik penjualan dengan chart interaktif.</p>
+                        <div class="card-tags">
+                            <span>React</span>
+                            <span>Chart.js</span>
+                            <span>Tailwind</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Lihat <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="project-card reveal">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/weather-sky/600/400.jpg" alt="Screenshot Weather App" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Weather App</h3>
+                        <p class="card-desc">Aplikasi cuaca real-time dengan pencarian lokasi, animasi ikon, dan ramalan 5 hari ke depan.</p>
+                        <div class="card-tags">
+                            <span>JavaScript</span>
+                            <span>API</span>
+                            <span>CSS</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Lihat <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="project-card reveal">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/task-board/600/400.jpg" alt="Screenshot Task Manager" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Task Manager</h3>
+                        <p class="card-desc">Aplikasi manajemen tugas dengan fitur drag & drop, kategori, dan penyimpanan lokal.</p>
+                        <div class="card-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Lihat <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Kontak</span>
+                <h2 class="section-title">Mari Terhubung</h2>
+            </div>
+
+            <div class="contact-content reveal">
+                <p class="contact-text">
+                    Tertarik untuk berkolaborasi atau sekadar ngobrol? Jangan ragu untuk menghubungi saya melalui email atau sosial media di bawah ini.
+                </p>
+
+                <a href="mailto:andi.pratama@email.com" class="contact-email">
+                    <i class="fa-solid fa-envelope"></i>
+                    andi.pratama@email.com
+                </a>
+
+                <div class="contact-socials">
+                    <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Andi Pratama. Dibuat dengan <span class="accent">&#9829;</span> dan banyak kopi.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
