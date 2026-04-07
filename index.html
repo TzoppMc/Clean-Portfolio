@@ -295,8 +295,9 @@
 </audio>
 
 <!-- Tombol kontrol musik di pojok kanan bawah -->
-<div id="musicControl" style="position: fixed; bottom: 24px; right: 24px; z-index: 999; background: #111827; color: white; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.2s;">
-    <i class="fas fa-music" id="musicIcon"></i>
+<div id="musicControl">
+    <i class="fas fa-play" id="musicIcon"></i>
+    <span id="musicText">Putar Musik</span>
 </div>
   
 <nav class="navbar">
@@ -514,42 +515,34 @@
 const bgMusic = document.getElementById('bgMusic');
 const musicControl = document.getElementById('musicControl');
 const musicIcon = document.getElementById('musicIcon');
+const musicText = document.getElementById('musicText');
 let isMusicPlaying = false;
 
-// Atur volume (30% biar tidak mengganggu)
 bgMusic.volume = 0.3;
+bgMusic.loop = true;
 
-// Fungsi play/pause
 function toggleMusic() {
     if (isMusicPlaying) {
         bgMusic.pause();
-        musicIcon.className = 'fas fa-music';
-        musicIcon.style.opacity = '0.6';
+        musicIcon.className = 'fas fa-play';
+        musicText.innerText = 'Putar Musik';
+        musicControl.style.background = '#3b82f6';
     } else {
         bgMusic.play().catch(e => {
-            console.log('Pengguna harus klik tombol musik terlebih dahulu');
+            console.log('Klik tombol musik untuk memutar');
         });
-        musicIcon.className = 'fas fa-volume-up';
-        musicIcon.style.opacity = '1';
+        musicIcon.className = 'fas fa-pause';
+        musicText.innerText = 'Hentikan';
+        musicControl.style.background = '#ef4444';
     }
     isMusicPlaying = !isMusicPlaying;
 }
 
-// Event klik tombol
 musicControl.addEventListener('click', toggleMusic);
 
-// Coba autoplay saat halaman dimuat (biasanya diblokir browser)
-window.addEventListener('load', () => {
-    bgMusic.play().then(() => {
-        isMusicPlaying = true;
-        musicIcon.className = 'fas fa-volume-up';
-        musicIcon.style.opacity = '1';
-    }).catch(() => {
-        console.log('Autoplay diblokir. Klik tombol musik untuk memutar lagu.');
-        musicIcon.style.opacity = '0.6';
-    });
-});
-// ========== AKHIR KONTROL MUSIK ==========  
+// Pesan di console
+console.log('🎵 Klik tombol "Putar Musik" di pojok kanan bawah untuk mendengar background music');
+// ========== AKHIR KONTROL MUSIK ==========
 </script>
 </body>
 </html>
