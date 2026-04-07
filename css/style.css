@@ -1,24 +1,28 @@
-/* Tombol musik stylish */
-#musicControl {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 999;
-    background: #3b82f6;
-    color: white;
-    border-radius: 40px;
-    padding: 10px 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.2s;
-}
+<style>
+    /* ... semua kode CSS Anda yang sudah ada ... */
 
-#musicControl:hover {
-    transform: scale(1.05);
-    background: #2563eb;
-}
+    /* Tombol musik di kanan bawah */
+    #musicControl {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 999;
+        background: #3b82f6;
+        color: white;
+        border-radius: 40px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.2s;
+    }
+
+    #musicControl:hover {
+        transform: scale(1.05);
+        background: #2563eb;
+    }
+</style>
