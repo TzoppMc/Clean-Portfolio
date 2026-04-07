@@ -8,9 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ----------------------------------------------
-      RESET & GLOBAL (Minimalis Putih + Retro Grid Subtle)
-    ------------------------------------------------ */
     * {
       margin: 0;
       padding: 0;
@@ -26,7 +23,6 @@
       transition: background-color 0.3s ease, color 0.2s ease;
     }
 
-    /* Retro game background pixel grid + dynamic canvas overlay */
     .retro-bg {
       position: fixed;
       top: 0;
@@ -41,7 +37,6 @@
       background-size: 36px 36px;
     }
 
-    /* canvas untuk partikel grid dinamis */
     #gridCanvas {
       position: fixed;
       top: 0;
@@ -89,7 +84,6 @@
       border-radius: 4px;
     }
 
-    /* Navbar */
     .navbar {
       padding: 20px 0;
       background: rgba(255,255,255,0.96);
@@ -140,7 +134,6 @@
       transition: 0.2s;
     }
 
-    /* Hero */
     .hero {
       padding: 100px 0 80px;
       text-align: center;
@@ -181,7 +174,6 @@
       transform: translateY(-2px);
     }
 
-    /* Cards & Skills */
     .about-text {
       max-width: 800px;
       background: #f9fafc;
@@ -273,7 +265,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Dark mode subtle (tetap clean) */
     body.dark {
       background-color: #0b1120;
       color: #e2e8f0;
@@ -283,6 +274,31 @@
       border-color: #1f2a3e;
     }
     body.dark .theme-toggle { background: #1e293b; color: #facc15; }
+
+    /* TOMBOL MUSIK DI KANAN BAWAH */
+    #musicControl {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 999;
+        background: #3b82f6;
+        color: white;
+        border-radius: 40px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.2s;
+    }
+
+    #musicControl:hover {
+        transform: scale(1.05);
+        background: #2563eb;
+    }
   </style>
 </head>
 <body>
@@ -382,8 +398,6 @@
 <footer>© 2025 Fiqhi Dewa Prayastama — Bridging Insurance & Technology — Built for internship portfolio</footer>
 
 <script>
-  // ======================= CSS + JS Lanjutan ========================
-  // 1. Typing effect (JS interaktif)
   const taglines = [
     "Mahasiswa Asuransi & Teknologi",
     "Python • JS • SQL • UI/UX",
@@ -416,7 +430,6 @@
   }
   typeEffect();
 
-  // 2. Progress bars & reveal
   const skillPercentMap = { python:82, htmlcss:88, js:74, sql:76, uiux:70, excel:85 };
   const skillCards = document.querySelectorAll('.skill-card');
   function animateProgress() {
@@ -439,7 +452,6 @@
   window.addEventListener('scroll', animateProgress);
   window.addEventListener('load', animateProgress);
 
-  // 3. Scroll spy active link
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
   function updateActive() {
@@ -456,7 +468,6 @@
   window.addEventListener('scroll', updateActive);
   updateActive();
 
-  // 4. Dark mode toggle (CSS + JS lanjutan)
   const toggleBtn = document.getElementById('darkModeToggle');
   toggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
@@ -465,7 +476,6 @@
     else icon.className = 'fas fa-moon';
   });
 
-  // 5. Form interaksi (simulasi)
   document.getElementById('sendMessageBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const name = document.getElementById('nameInput').value;
@@ -473,12 +483,10 @@
     else alert(`Terima kasih ${name}! Pesan magang/kolaborasi telah dikirim (simulasi). Saya akan menghubungi Anda.`);
   });
 
-  // 6. Demo links notifikasi
   document.querySelectorAll('.demo-link').forEach(link => {
     link.addEventListener('click', (e) => { e.preventDefault(); alert("🚀 Proyek portofolio ini menunjukkan keahlian teknis saya untuk posisi magang insurtech."); });
   });
 
-  // 7. Canvas efek retro grid dinamis (subtle neon)
   const canvas = document.getElementById('gridCanvas');
   const ctx = canvas.getContext('2d');
   function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; drawGrid(); }
@@ -494,7 +502,6 @@
     for(let y = 0; y < canvas.height; y += step) {
       ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke();
     }
-    // tambah titik neon
     ctx.fillStyle = "rgba(59,130,246,0.25)";
     for(let i=0;i<80;i++) {
       let randX = Math.random() * canvas.width;
@@ -505,44 +512,40 @@
   window.addEventListener('resize', () => { resizeCanvas(); drawGrid(); });
   resizeCanvas();
   
-  // 8. Fade-up scroll reveal
   const fadeObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
   }, { threshold:0.1 });
   document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
 
-// ========== KONTROL MUSIK BACKGROUND ==========
-const bgMusic = document.getElementById('bgMusic');
-const musicControl = document.getElementById('musicControl');
-const musicIcon = document.getElementById('musicIcon');
-const musicText = document.getElementById('musicText');
-let isMusicPlaying = false;
+  // KONTROL MUSIK
+  const bgMusic = document.getElementById('bgMusic');
+  const musicControl = document.getElementById('musicControl');
+  const musicIcon = document.getElementById('musicIcon');
+  const musicText = document.getElementById('musicText');
+  let isMusicPlaying = false;
 
-bgMusic.volume = 0.3;
-bgMusic.loop = true;
+  bgMusic.volume = 0.3;
+  bgMusic.loop = true;
 
-function toggleMusic() {
-    if (isMusicPlaying) {
-        bgMusic.pause();
-        musicIcon.className = 'fas fa-play';
-        musicText.innerText = 'Putar Musik';
-        musicControl.style.background = '#3b82f6';
-    } else {
-        bgMusic.play().catch(e => {
-            console.log('Klik tombol musik untuk memutar');
-        });
-        musicIcon.className = 'fas fa-pause';
-        musicText.innerText = 'Hentikan';
-        musicControl.style.background = '#ef4444';
-    }
-    isMusicPlaying = !isMusicPlaying;
-}
+  function toggleMusic() {
+      if (isMusicPlaying) {
+          bgMusic.pause();
+          musicIcon.className = 'fas fa-play';
+          musicText.innerText = 'Putar Musik';
+          musicControl.style.background = '#3b82f6';
+      } else {
+          bgMusic.play().catch(e => {
+              console.log('Klik tombol musik untuk memutar');
+          });
+          musicIcon.className = 'fas fa-pause';
+          musicText.innerText = 'Hentikan';
+          musicControl.style.background = '#ef4444';
+      }
+      isMusicPlaying = !isMusicPlaying;
+  }
 
-musicControl.addEventListener('click', toggleMusic);
-
-// Pesan di console
-console.log('🎵 Klik tombol "Putar Musik" di pojok kanan bawah untuk mendengar background music');
-// ========== AKHIR KONTROL MUSIK ==========
+  musicControl.addEventListener('click', toggleMusic);
+  console.log('🎵 Klik tombol "Putar Musik" di pojok kanan bawah untuk mendengar background music');
 </script>
 </body>
 </html>
