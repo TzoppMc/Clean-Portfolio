@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* ----------------------------------------------
+      RESET & GLOBAL
+    ------------------------------------------------ */
     * {
       margin: 0;
       padding: 0;
@@ -23,6 +26,7 @@
       transition: background-color 0.3s ease, color 0.2s ease;
     }
 
+    /* Retro game background */
     .retro-bg {
       position: fixed;
       top: 0;
@@ -57,7 +61,6 @@
     section {
       padding: 80px 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      transition: border-color 0.2s;
     }
     section:last-child { border-bottom: none; }
 
@@ -84,6 +87,7 @@
       border-radius: 4px;
     }
 
+    /* Navbar */
     .navbar {
       padding: 20px 0;
       background: rgba(255,255,255,0.96);
@@ -92,7 +96,6 @@
       top: 0;
       z-index: 100;
       border-bottom: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.2s;
     }
     .nav-container {
       display: flex;
@@ -134,6 +137,7 @@
       transition: 0.2s;
     }
 
+    /* Hero */
     .hero {
       padding: 100px 0 80px;
       text-align: center;
@@ -174,6 +178,7 @@
       transform: translateY(-2px);
     }
 
+    /* About */
     .about-text {
       max-width: 800px;
       background: #f9fafc;
@@ -181,6 +186,8 @@
       border-radius: 28px;
       border: 1px solid #eef2ff;
     }
+
+    /* Skills */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -208,6 +215,21 @@
       border-radius: 20px;
       transition: width 0.8s cubic-bezier(0.22,0.97,0.36,1);
     }
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .skill-percent {
+      text-align: right;
+      font-size: 12px;
+      margin-top: 4px;
+      color: #3b82f6;
+    }
+
+    /* Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
@@ -221,11 +243,47 @@
       transition: 0.25s;
     }
     .project-card:hover { transform: translateY(-8px); border-color: #3b82f6; }
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: #3b82f6;
+    }
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+    .project-tags span {
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+    .demo-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Contact */
     .contact-flex {
       display: flex;
       flex-wrap: wrap;
       gap: 48px;
       justify-content: space-between;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info div {
+      margin-bottom: 16px;
+    }
+    .contact-info i {
+      width: 30px;
+      color: #3b82f6;
     }
     .contact-form {
       flex:1;
@@ -246,16 +304,20 @@
       padding: 12px 24px;
       border-radius: 32px;
       cursor: pointer;
+      margin-top: 8px;
     }
+
     footer {
       text-align: center;
       padding: 32px;
       color: #5b6e8c;
     }
+
     @media (max-width: 760px) {
       .hero h1 { font-size: 2.2rem; }
       section { padding: 50px 0; }
     }
+
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -265,6 +327,8 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Dark mode */
     body.dark {
       background-color: #0b1120;
       color: #e2e8f0;
@@ -274,40 +338,54 @@
       border-color: #1f2a3e;
     }
     body.dark .theme-toggle { background: #1e293b; color: #facc15; }
+    body.dark .contact-form input, body.dark .contact-form textarea {
+      background-color: #1e293b;
+      border-color: #334155;
+      color: white;
+    }
+    body.dark .project-tags span {
+      background-color: #1e293b;
+      color: #94a3b8;
+    }
 
-       /* TOMBOL MUSIK - PASTIKAN DI KANAN BAWAH */
+    /* TOMBOL MUSIK - KANAN BAWAH */
     #musicControl {
-        position: fixed !important;
-        bottom: 24px !important;
-        right: 24px !important;
-        top: auto !important;
-        left: auto !important;
-        z-index: 999 !important;
-        background: #3b82f6 !important;
-        color: white !important;
-        border-radius: 40px !important;
-        padding: 10px 18px !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        cursor: pointer !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
-        font-size: 14px !important;
-        font-family: 'Inter', sans-serif !important;
-        transition: all 0.2s !important;
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 999;
+        background: #3b82f6;
+        color: white;
+        border-radius: 40px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.2s;
+        border: none;
     }
 
     #musicControl:hover {
-        transform: scale(1.05) !important;
-        background: #2563eb !important;
+        transform: scale(1.05);
+        background: #2563eb;
     }
+  </style>
+</head>
+<body>
+<div class="retro-bg"></div>
+<canvas id="gridCanvas"></canvas>
 
 <!-- Background music -->
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
     <source src="Asset/music/in_dreamland_bg.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
 </audio>
 
-<!-- Tombol kontrol musik di pojok kanan bawah -->
+<!-- Tombol musik pojok kanan bawah -->
 <div id="musicControl">
     <i class="fas fa-play" id="musicIcon"></i>
     <span id="musicText">Putar Musik</span>
@@ -333,7 +411,7 @@
       <div class="hero-badge" style="display:inline-block; background:#eef2ff; padding:6px 18px; border-radius:40px; margin-bottom:20px;"><i class="fas fa-microchip"></i> insurtech future</div>
       <h1>Fiqhi Dewa Prayastama</h1>
       <div id="typing-text"></div>
-      <div class="hero-tagline">“Bridging Insurance and Technology”</div>
+      <div class="hero-tagline">"Bridging Insurance and Technology"</div>
       <a href="#contact" class="cta-button">Hubungi Saya <i class="fas fa-paper-plane"></i></a>
     </div>
   </section>
@@ -392,9 +470,11 @@
     </div>
   </section>
 </main>
+
 <footer>© 2025 Fiqhi Dewa Prayastama — Bridging Insurance & Technology — Built for internship portfolio</footer>
 
 <script>
+  // ======================= TYPING EFFECT ========================
   const taglines = [
     "Mahasiswa Asuransi & Teknologi",
     "Python • JS • SQL • UI/UX",
@@ -403,6 +483,7 @@
   ];
   let idx = 0, charIdx = 0, isDeleting = false;
   const typingEl = document.getElementById("typing-text");
+  
   function typeEffect() {
     let current = taglines[idx];
     if (isDeleting) {
@@ -427,8 +508,10 @@
   }
   typeEffect();
 
+  // ======================= PROGRESS BARS ========================
   const skillPercentMap = { python:82, htmlcss:88, js:74, sql:76, uiux:70, excel:85 };
   const skillCards = document.querySelectorAll('.skill-card');
+  
   function animateProgress() {
     skillCards.forEach(card => {
       const rect = card.getBoundingClientRect();
@@ -440,8 +523,11 @@
         const percentSpan = card.querySelector('.skill-percent');
         let curr = 0;
         const interval = setInterval(() => {
-          if (curr < percent) { curr++; fill.style.width = curr+'%'; percentSpan.innerText = curr+'%'; }
-          else clearInterval(interval);
+          if (curr < percent) { 
+            curr++; 
+            fill.style.width = curr+'%'; 
+            percentSpan.innerText = curr+'%'; 
+          } else clearInterval(interval);
         }, 15);
       }
     });
@@ -449,8 +535,10 @@
   window.addEventListener('scroll', animateProgress);
   window.addEventListener('load', animateProgress);
 
+  // ======================= SCROLL SPY ========================
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
+  
   function updateActive() {
     let current = '';
     sections.forEach(section => {
@@ -465,6 +553,7 @@
   window.addEventListener('scroll', updateActive);
   updateActive();
 
+  // ======================= DARK MODE ========================
   const toggleBtn = document.getElementById('darkModeToggle');
   toggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
@@ -473,6 +562,7 @@
     else icon.className = 'fas fa-moon';
   });
 
+  // ======================= FORM ========================
   document.getElementById('sendMessageBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const name = document.getElementById('nameInput').value;
@@ -480,13 +570,24 @@
     else alert(`Terima kasih ${name}! Pesan magang/kolaborasi telah dikirim (simulasi). Saya akan menghubungi Anda.`);
   });
 
+  // ======================= DEMO LINKS ========================
   document.querySelectorAll('.demo-link').forEach(link => {
-    link.addEventListener('click', (e) => { e.preventDefault(); alert("🚀 Proyek portofolio ini menunjukkan keahlian teknis saya untuk posisi magang insurtech."); });
+    link.addEventListener('click', (e) => { 
+      e.preventDefault(); 
+      alert("🚀 Proyek portofolio ini menunjukkan keahlian teknis saya untuk posisi magang insurtech."); 
+    });
   });
 
+  // ======================= CANVAS GRID ========================
   const canvas = document.getElementById('gridCanvas');
   const ctx = canvas.getContext('2d');
-  function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; drawGrid(); }
+  
+  function resizeCanvas() { 
+    canvas.width = window.innerWidth; 
+    canvas.height = window.innerHeight; 
+    drawGrid(); 
+  }
+  
   function drawGrid() {
     if(!ctx) return;
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -509,64 +610,71 @@
   window.addEventListener('resize', () => { resizeCanvas(); drawGrid(); });
   resizeCanvas();
   
+  // ======================= FADE UP REVEAL ========================
   const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
+    entries.forEach(entry => { 
+      if(entry.isIntersecting) entry.target.classList.add('revealed'); 
+    });
   }, { threshold:0.1 });
   document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
 
- // ========== KONTROL MUSIK (Autoplay setelah klik di mana saja) ==========
-const bgMusic = document.getElementById('bgMusic');
-const musicControl = document.getElementById('musicControl');
-const musicIcon = document.getElementById('musicIcon');
-const musicText = document.getElementById('musicText');
-let isMusicPlaying = false;
-let musicStarted = false;
+  // ======================= KONTROL MUSIK ========================
+  const bgMusic = document.getElementById('bgMusic');
+  const musicControl = document.getElementById('musicControl');
+  const musicIcon = document.getElementById('musicIcon');
+  const musicText = document.getElementById('musicText');
+  let isMusicPlaying = false;
+  let musicStarted = false;
 
-bgMusic.volume = 0.3;
-bgMusic.loop = true;
+  bgMusic.volume = 0.3;
+  bgMusic.loop = true;
 
-function startMusic() {
+  // Fungsi mulai musik
+  function startMusic() {
     if (!musicStarted) {
-        bgMusic.play().then(() => {
-            isMusicPlaying = true;
-            musicStarted = true;
-            musicIcon.className = 'fas fa-pause';
-            musicText.innerText = 'Hentikan';
-            musicControl.style.background = '#ef4444';
-            console.log('🎵 Musik mulai diputar');
-        }).catch(e => console.log('Gagal autoplay:', e));
+      bgMusic.play().then(() => {
+        isMusicPlaying = true;
+        musicStarted = true;
+        musicIcon.className = 'fas fa-pause';
+        musicText.innerText = 'Hentikan';
+        musicControl.style.background = '#ef4444';
+        console.log('🎵 Musik mulai diputar');
+      }).catch(e => {
+        console.log('Autoplay diblokir browser:', e);
+      });
     }
-}
+  }
 
-function toggleMusic() {
+  // Fungsi toggle play/pause manual
+  function toggleMusic() {
     if (isMusicPlaying) {
-        bgMusic.pause();
-        musicIcon.className = 'fas fa-play';
-        musicText.innerText = 'Putar Musik';
-        musicControl.style.background = '#3b82f6';
-        isMusicPlaying = false;
+      bgMusic.pause();
+      musicIcon.className = 'fas fa-play';
+      musicText.innerText = 'Putar Musik';
+      musicControl.style.background = '#3b82f6';
+      isMusicPlaying = false;
     } else {
-        bgMusic.play().catch(e => console.log('Error:', e));
+      bgMusic.play().then(() => {
         musicIcon.className = 'fas fa-pause';
         musicText.innerText = 'Hentikan';
         musicControl.style.background = '#ef4444';
         isMusicPlaying = true;
         musicStarted = true;
+      }).catch(e => console.log('Error play musik:', e));
     }
-}
+  }
 
-// Event klik tombol musik
-musicControl.addEventListener('click', toggleMusic);
+  // Event klik tombol musik
+  musicControl.addEventListener('click', toggleMusic);
 
-// EVENT INI YANG MEMBUAT AUTOPLAY SETELAH KLIK DI MANA SAJA
-document.body.addEventListener('click', function initAutoplay() {
+  // AUTOPLAY: musik akan mulai setelah user KLIK DI MANA SAJA di halaman
+  document.body.addEventListener('click', function initAutoplay() {
     startMusic();
-    // Hapus event listener setelah pertama kali klik, agar tidak double
     document.body.removeEventListener('click', initAutoplay);
-});
+  });
 
-console.log('🎵 Klik di mana saja di halaman ini untuk memulai musik, atau klik tombol musik di pojok kanan bawah');
-// ========== AKHIR KONTROL MUSIK ==========
+  console.log('🎵 Klik di mana saja di halaman ini untuk memulai musik, atau klik tombol musik di pojok kanan bawah');
+  // ======================= AKHIR KONTROL MUSIK ========================
 </script>
 </body>
 </html>
