@@ -275,35 +275,32 @@
     }
     body.dark .theme-toggle { background: #1e293b; color: #facc15; }
 
-    /* TOMBOL MUSIK DI KANAN BAWAH */
+       /* TOMBOL MUSIK - PASTIKAN DI KANAN BAWAH */
     #musicControl {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 999;
-        background: #3b82f6;
-        color: white;
-        border-radius: 40px;
-        padding: 10px 18px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        font-size: 14px;
-        font-family: 'Inter', sans-serif;
-        transition: all 0.2s;
+        position: fixed !important;
+        bottom: 24px !important;
+        right: 24px !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: 999 !important;
+        background: #3b82f6 !important;
+        color: white !important;
+        border-radius: 40px !important;
+        padding: 10px 18px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+        font-size: 14px !important;
+        font-family: 'Inter', sans-serif !important;
+        transition: all 0.2s !important;
     }
 
     #musicControl:hover {
-        transform: scale(1.05);
-        background: #2563eb;
+        transform: scale(1.05) !important;
+        background: #2563eb !important;
     }
-  </style>
-</head>
-<body>
-<div class="retro-bg"></div>
-<canvas id="gridCanvas"></canvas>
 
 <!-- Background music -->
 <audio id="bgMusic" loop>
@@ -517,35 +514,59 @@
   }, { threshold:0.1 });
   document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
 
-  // KONTROL MUSIK
-  const bgMusic = document.getElementById('bgMusic');
-  const musicControl = document.getElementById('musicControl');
-  const musicIcon = document.getElementById('musicIcon');
-  const musicText = document.getElementById('musicText');
-  let isMusicPlaying = false;
+ // ========== KONTROL MUSIK (Autoplay setelah klik di mana saja) ==========
+const bgMusic = document.getElementById('bgMusic');
+const musicControl = document.getElementById('musicControl');
+const musicIcon = document.getElementById('musicIcon');
+const musicText = document.getElementById('musicText');
+let isMusicPlaying = false;
+let musicStarted = false;
 
-  bgMusic.volume = 0.3;
-  bgMusic.loop = true;
+bgMusic.volume = 0.3;
+bgMusic.loop = true;
 
-  function toggleMusic() {
-      if (isMusicPlaying) {
-          bgMusic.pause();
-          musicIcon.className = 'fas fa-play';
-          musicText.innerText = 'Putar Musik';
-          musicControl.style.background = '#3b82f6';
-      } else {
-          bgMusic.play().catch(e => {
-              console.log('Klik tombol musik untuk memutar');
-          });
-          musicIcon.className = 'fas fa-pause';
-          musicText.innerText = 'Hentikan';
-          musicControl.style.background = '#ef4444';
-      }
-      isMusicPlaying = !isMusicPlaying;
-  }
+function startMusic() {
+    if (!musicStarted) {
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicStarted = true;
+            musicIcon.className = 'fas fa-pause';
+            musicText.innerText = 'Hentikan';
+            musicControl.style.background = '#ef4444';
+            console.log('🎵 Musik mulai diputar');
+        }).catch(e => console.log('Gagal autoplay:', e));
+    }
+}
 
-  musicControl.addEventListener('click', toggleMusic);
-  console.log('🎵 Klik tombol "Putar Musik" di pojok kanan bawah untuk mendengar background music');
+function toggleMusic() {
+    if (isMusicPlaying) {
+        bgMusic.pause();
+        musicIcon.className = 'fas fa-play';
+        musicText.innerText = 'Putar Musik';
+        musicControl.style.background = '#3b82f6';
+        isMusicPlaying = false;
+    } else {
+        bgMusic.play().catch(e => console.log('Error:', e));
+        musicIcon.className = 'fas fa-pause';
+        musicText.innerText = 'Hentikan';
+        musicControl.style.background = '#ef4444';
+        isMusicPlaying = true;
+        musicStarted = true;
+    }
+}
+
+// Event klik tombol musik
+musicControl.addEventListener('click', toggleMusic);
+
+// EVENT INI YANG MEMBUAT AUTOPLAY SETELAH KLIK DI MANA SAJA
+document.body.addEventListener('click', function initAutoplay() {
+    startMusic();
+    // Hapus event listener setelah pertama kali klik, agar tidak double
+    document.body.removeEventListener('click', initAutoplay);
+});
+
+console.log('🎵 Klik di mana saja di halaman ini untuk memulai musik, atau klik tombol musik di pojok kanan bawah');
+// ========== AKHIR KONTROL MUSIK ==========
 </script>
 </body>
 </html>
